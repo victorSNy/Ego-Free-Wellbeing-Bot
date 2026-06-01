@@ -12,9 +12,9 @@ from telegram.ext import ApplicationBuilder, MessageHandler, filters
 # Load CSV 
 try:
     data = pd.read_csv(r"C:\Victor\DS\ego_free_bot\knowledge_base.csv", encoding='utf-8-sig').fillna("")
-    print("✅ CSV loaded.")
+    print("CSV loaded.")
 except FileNotFoundError:
-    print("❌ CSV not found.")
+    print("CSV not found.")
     exit(1)
 
 data["priority"] = pd.to_numeric(data["priority"], errors="coerce").fillna(99).astype(int)
@@ -73,12 +73,12 @@ def find_best_tools(emotion, user_text):
     top = [r[2] for r in results[:2]]
     text = ""
     for r in top:
-        text += f"\n✅ {r['tool_name']}\n{r['tool_description']}\nSource: {r['citation']}\n"
+        text += f"\n {r['tool_name']}\n{r['tool_description']}\nSource: {r['citation']}\n"
     return text, top
     def workflow(user_id, text):
     if text.lower() == "/start":
         user_state[user_id] = {"step": 1}
-        return "🔄 Conversation reset.\n\n" + emotions_list
+        return "Conversation reset.\n\n" + emotions_list
 
     state = user_state.get(user_id, {"step": 1})
     step = state["step"]
@@ -86,7 +86,7 @@ def find_best_tools(emotion, user_text):
     if step == 1:
         state["step"] = 2
         user_state[user_id] = state
-        return "🌱 Emotional State Selection\n\n" + emotions_list
+        return "Emotional State Selection\n\n" + emotions_list
 
     elif step == 2:
         emotion = normalize_emotion(text)
@@ -136,7 +136,7 @@ def find_best_tools(emotion, user_text):
         else:
             tool_text = ""
         for r in rows[:2]:
-            tool_text += f"\n✅ {r['tool_name']}\n{r['tool_description']}\nSource: {r['citation']}\n"
+            tool_text += f"\n {r['tool_name']}\n{r['tool_description']}\nSource: {r['citation']}\n"
         state["selected_tools"] = rows
         state["tools_text"] = tool_text
         state["step"] = 6
@@ -198,7 +198,7 @@ def find_best_tools(emotion, user_text):
             except:
                 ai_summary = None
 
-        # ✅ fallback summary if AI fails
+        # fallback summary if AI fails
         if not ai_summary or "failed" in ai_summary.lower():
 
             fallback = f"""
@@ -212,7 +212,7 @@ From a deeper perspective, this experience may also be connected to patterns of 
 A helpful next step is to apply the tools you explored in small, practical ways and observe how your experience changes over time.
 """
             ai_summary = fallback
-        summary = f"\n🌱 SUMMARY\n\n{ai_summary}"
+        summary = f"\n SUMMARY\n\n{ai_summary}"
     else:
         summary = "Ok, no summary saved."
     user_state[user_id] = {"step": 1}
@@ -228,5 +228,5 @@ if __name__ == "__main__":
     TOKEN = "8918816834:AAHM9mf6QKkhWB6RgFMkT_nWZfnoBLrEjys"   
     app = ApplicationBuilder().token(TOKEN).build()
     app.add_handler(MessageHandler(filters.TEXT, handle_message))
-    print("✅ Bot is running. Watch console for debug output...")
+    print(" Bot is running. Watch console for debug output...")
     app.run_polling()
