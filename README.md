@@ -1,5 +1,31 @@
-# Ego-Free-Wellbeing-Bot
+Ego-Free-Wellbeing-Bot
 Diploma for DS course
+
+A Telegram bot designed to provide emotional support by guiding users through a structured 8-step workflow. It offers evidence-based psychological coping tools and traditional spiritual practices based on a curated knowledge base.
+
+Features
+
+*   Anonymous 8-step emotional guidance workflow.
+*   Select from 8 emotional states (Anxiety, Sadness, Anger, etc.).
+*   Offers psychological, spiritual, or both types of coping tools from a CSV database.
+*   Explores the connection between emotions and ego-attachment.
+*   Provides a final summary for the user.
+
+Setup and Installation
+
+Follow these steps to run the bot locally.
+
+Prerequisites
+
+*   Python 3.11 or higher installed.
+*   A Telegram account and a bot token from [@BotFather](https://t.me/botfather).
+
+Installation
+
+1.  Clone the repository (or download the files):
+    ```bash
+    git clone <your-github-repo-url>
+    cd <your-project-folder>
 
 Phyton code
 import nest_asyncio
