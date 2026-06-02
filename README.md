@@ -19,6 +19,7 @@ Installation
     ```bash
     git clone <your-github-repo-url>
     cd <your-project-folder>
+    *This branch is ready for review.*
 
 How it works
 User Layer (Telegram)
