@@ -221,7 +221,7 @@ async def handle_message(update, context):
     await update.message.reply_text(response)
 
 if __name__ == "__main__":
-    TOKEN = "8918816834:AAHM9mf6QKkhWB6RgFMkT_nWZfnoBLrEjys"   
+    TOKEN = ""   
     app = ApplicationBuilder().token(TOKEN).build()
     app.add_handler(MessageHandler(filters.TEXT, handle_message))
     print("✅ Bot is running. Watch console for debug output...")
